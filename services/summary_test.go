@@ -44,6 +44,7 @@ func (suite *SummaryServiceTestSuite) SetupSuite() {
 			Machine:         TestMachine1,
 			Time:            models.CustomTime(suite.TestStartTime),
 			Duration:        150 * time.Second,
+			NumHeartbeats:   2,
 		},
 		{
 			UserID:          TestUserId,
@@ -54,6 +55,7 @@ func (suite *SummaryServiceTestSuite) SetupSuite() {
 			Machine:         TestMachine1,
 			Time:            models.CustomTime(suite.TestStartTime.Add((30 + 130) * time.Second)),
 			Duration:        20 * time.Second,
+			NumHeartbeats:   1,
 		},
 		{
 			UserID:          TestUserId,
@@ -64,6 +66,7 @@ func (suite *SummaryServiceTestSuite) SetupSuite() {
 			Machine:         TestMachine1,
 			Time:            models.CustomTime(suite.TestStartTime.Add(3 * time.Minute)),
 			Duration:        15 * time.Second,
+			NumHeartbeats:   3,
 		},
 	}
 	suite.TestLabels = []*models.ProjectLabel{
@@ -114,6 +117,7 @@ func (suite *SummaryServiceTestSuite) TestSummaryService_Summarize() {
 	assert.Equal(suite.T(), from, result.FromTime.T())
 	assert.Equal(suite.T(), to, result.ToTime.T())
 	assert.Zero(suite.T(), result.TotalTime())
+	assert.Zero(suite.T(), result.NumHeartbeats)
 	assert.Empty(suite.T(), result.Projects)
 
 	/* TEST 2 */
@@ -127,6 +131,7 @@ func (suite *SummaryServiceTestSuite) TestSummaryService_Summarize() {
 	assert.Equal(suite.T(), suite.TestDurations[0].Time.T(), result.FromTime.T())
 	assert.Equal(suite.T(), suite.TestDurations[0].Time.T(), result.ToTime.T())
 	assert.Equal(suite.T(), 150*time.Second, result.TotalTime())
+	assert.Equal(suite.T(), 2, result.NumHeartbeats)
 	assertNumAllItems(suite.T(), 1, result, "")
 
 	/* TEST 3 */
@@ -142,6 +147,7 @@ func (suite *SummaryServiceTestSuite) TestSummaryService_Summarize() {
 	assert.Equal(suite.T(), 185*time.Second, result.TotalTime())
 	assert.Equal(suite.T(), 170*time.Second, result.TotalTimeByKey(models.SummaryEditor, TestEditorGoland))
 	assert.Equal(suite.T(), 15*time.Second, result.TotalTimeByKey(models.SummaryEditor, TestEditorVscode))
+	assert.Equal(suite.T(), 6, result.NumHeartbeats)
 	assert.Len(suite.T(), result.Editors, 2)
 	assertNumAllItems(suite.T(), 1, result, "e")
 }
@@ -176,12 +182,13 @@ func (suite *SummaryServiceTestSuite) TestSummaryService_Retrieve() {
 			Editors:          []*models.SummaryItem{},
 			OperatingSystems: []*models.SummaryItem{},
 			Machines:         []*models.SummaryItem{},
+			NumHeartbeats:    100,
 		},
 	}
 
 	suite.SummaryRepository.On("GetByUserWithin", suite.TestUser, from, to).Return(summaries, nil)
-	suite.DurationService.On("Get", from, summaries[0].FromTime.T(), suite.TestUser).Return([]*models.Duration{}, nil)
-	suite.DurationService.On("Get", summaries[0].ToTime.T(), to, suite.TestUser).Return([]*models.Duration{}, nil)
+	suite.DurationService.On("Get", from, summaries[0].FromTime.T(), suite.TestUser).Return(models.Durations{}, nil)
+	suite.DurationService.On("Get", summaries[0].ToTime.T(), to, suite.TestUser).Return(models.Durations{}, nil)
 
 	result, err = sut.Retrieve(from, to, suite.TestUser)
 
@@ -189,6 +196,7 @@ func (suite *SummaryServiceTestSuite) TestSummaryService_Retrieve() {
 	assert.NotNil(suite.T(), result)
 	assert.Len(suite.T(), result.Projects, 1)
 	assert.Equal(suite.T(), summaries[0].Projects[0].Total*time.Second, result.TotalTime())
+	assert.Equal(suite.T(), 100, result.NumHeartbeats)
 	suite.DurationService.AssertNumberOfCalls(suite.T(), "Get", 2)
 
 	/* TEST 2 */
@@ -210,6 +218,7 @@ func (suite *SummaryServiceTestSuite) TestSummaryService_Retrieve() {
 			Editors:          []*models.SummaryItem{},
 			OperatingSystems: []*models.SummaryItem{},
 			Machines:         []*models.SummaryItem{},
+			NumHeartbeats:    100,
 		},
 		{
 			ID:       uint(rand.Uint32()),
@@ -227,6 +236,7 @@ func (suite *SummaryServiceTestSuite) TestSummaryService_Retrieve() {
 			Editors:          []*models.SummaryItem{},
 			OperatingSystems: []*models.SummaryItem{},
 			Machines:         []*models.SummaryItem{},
+			NumHeartbeats:    100,
 		},
 	}
 
@@ -241,6 +251,7 @@ func (suite *SummaryServiceTestSuite) TestSummaryService_Retrieve() {
 	assert.Equal(suite.T(), 185*time.Second+90*time.Minute, result.TotalTime())
 	assert.Equal(suite.T(), 185*time.Second+45*time.Minute, result.TotalTimeByKey(models.SummaryProject, TestProject1))
 	assert.Equal(suite.T(), 45*time.Minute, result.TotalTimeByKey(models.SummaryProject, TestProject2))
+	assert.Equal(suite.T(), 206, result.NumHeartbeats)
 	suite.DurationService.AssertNumberOfCalls(suite.T(), "Get", 2+1)
 
 	/* TEST 3 */
@@ -263,6 +274,7 @@ func (suite *SummaryServiceTestSuite) TestSummaryService_Retrieve() {
 			Editors:          []*models.SummaryItem{},
 			OperatingSystems: []*models.SummaryItem{},
 			Machines:         []*models.SummaryItem{},
+			NumHeartbeats:    100,
 		},
 		{
 			ID:       uint(rand.Uint32()),
@@ -280,6 +292,7 @@ func (suite *SummaryServiceTestSuite) TestSummaryService_Retrieve() {
 			Editors:          []*models.SummaryItem{},
 			OperatingSystems: []*models.SummaryItem{},
 			Machines:         []*models.SummaryItem{},
+			NumHeartbeats:    100,
 		},
 	}
 
@@ -294,6 +307,7 @@ func (suite *SummaryServiceTestSuite) TestSummaryService_Retrieve() {
 	assert.Equal(suite.T(), 90*time.Minute, result.TotalTime())
 	assert.Equal(suite.T(), 45*time.Minute, result.TotalTimeByKey(models.SummaryProject, TestProject1))
 	assert.Equal(suite.T(), 45*time.Minute, result.TotalTimeByKey(models.SummaryProject, TestProject2))
+	assert.Equal(suite.T(), 200, result.NumHeartbeats)
 	suite.DurationService.AssertNumberOfCalls(suite.T(), "Get", 2+1+1)
 }
 
@@ -333,8 +347,8 @@ func (suite *SummaryServiceTestSuite) TestSummaryService_Retrieve_DuplicateSumma
 	summaries = append(summaries, &(*summaries[0])) // add same summary again -> mustn't be counted twice!
 
 	suite.SummaryRepository.On("GetByUserWithin", suite.TestUser, from, to).Return(summaries, nil)
-	suite.DurationService.On("Get", from, summaries[0].FromTime.T(), suite.TestUser).Return([]*models.Duration{}, nil)
-	suite.DurationService.On("Get", summaries[0].ToTime.T(), to, suite.TestUser).Return([]*models.Duration{}, nil)
+	suite.DurationService.On("Get", from, summaries[0].FromTime.T(), suite.TestUser).Return(models.Durations{}, nil)
+	suite.DurationService.On("Get", summaries[0].ToTime.T(), to, suite.TestUser).Return(models.Durations{}, nil)
 
 	result, err = sut.Retrieve(from, to, suite.TestUser)
 
@@ -371,7 +385,7 @@ func (suite *SummaryServiceTestSuite) TestSummaryService_Aliased() {
 		Duration:        0, // not relevant here
 	})
 
-	suite.DurationService.On("Get", from, to, suite.TestUser).Return(durations, nil)
+	suite.DurationService.On("Get", from, to, suite.TestUser).Return(models.Durations(durations), nil)
 	suite.AliasService.On("InitializeUser", TestUserId).Return(nil)
 	suite.AliasService.On("GetAliasOrDefault", TestUserId, mock.Anything, TestProject1).Return(TestProject2, nil)
 	suite.AliasService.On("GetAliasOrDefault", TestUserId, mock.Anything, TestProject2).Return(TestProject2, nil)
@@ -384,6 +398,7 @@ func (suite *SummaryServiceTestSuite) TestSummaryService_Aliased() {
 	assert.NotNil(suite.T(), result)
 	assert.Zero(suite.T(), result.TotalTimeByKey(models.SummaryProject, TestProject1))
 	assert.NotZero(suite.T(), result.TotalTimeByKey(models.SummaryProject, TestProject2))
+	assert.Equal(suite.T(), 6, result.NumHeartbeats)
 }
 
 func (suite *SummaryServiceTestSuite) TestSummaryService_Aliased_ProjectLabels() {
@@ -411,7 +426,7 @@ func (suite *SummaryServiceTestSuite) TestSummaryService_Aliased_ProjectLabels()
 	})
 
 	suite.ProjectLabelService.On("GetByUser", suite.TestUser.ID).Return(suite.TestLabels, nil).Once()
-	suite.DurationService.On("Get", from, to, suite.TestUser).Return(durations, nil)
+	suite.DurationService.On("Get", from, to, suite.TestUser).Return(models.Durations(durations), nil)
 	suite.AliasService.On("InitializeUser", TestUserId).Return(nil)
 	suite.AliasService.On("GetAliasOrDefault", TestUserId, mock.Anything, TestProject1).Return(TestProject1, nil)
 	suite.AliasService.On("GetAliasOrDefault", TestUserId, mock.Anything, TestProject2).Return(TestProject1, nil)
@@ -422,9 +437,10 @@ func (suite *SummaryServiceTestSuite) TestSummaryService_Aliased_ProjectLabels()
 	assert.Nil(suite.T(), err)
 	assert.NotNil(suite.T(), result)
 	assert.Equal(suite.T(), 195*time.Second, result.TotalTimeByKey(models.SummaryLabel, TestProjectLabel1))
+	assert.Equal(suite.T(), 6, result.NumHeartbeats)
 }
 
-func filterDurations(from, to time.Time, durations []*models.Duration) []*models.Duration {
+func filterDurations(from, to time.Time, durations models.Durations) models.Durations {
 	filtered := make([]*models.Duration, 0, len(durations))
 	for _, d := range durations {
 		if (d.Time.T().Equal(from) || d.Time.T().After(from)) && d.Time.T().Before(to) {

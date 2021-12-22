@@ -21,7 +21,7 @@ func NewDurationService(heartbeatService IHeartbeatService) *DurationService {
 	return srv
 }
 
-func (srv *DurationService) Get(from, to time.Time, user *models.User) ([]*models.Duration, error) {
+func (srv *DurationService) Get(from, to time.Time, user *models.User) (models.Durations, error) {
 	heartbeats, err := srv.heartbeatService.GetAllWithin(from, to, user)
 	if err != nil {
 		return nil, err
@@ -57,12 +57,14 @@ func (srv *DurationService) Get(from, to time.Time, user *models.User) ([]*model
 				mapping[d1.GroupHash] = append(mapping[d1.GroupHash], d1)
 			}
 			latest = d1
+		} else {
+			latest.NumHeartbeats++
 		}
 
 		count++
 	}
 
-	durations := make([]*models.Duration, 0, count)
+	durations := make(models.Durations, 0, count)
 
 	for _, list := range mapping {
 		for _, d := range list {
@@ -73,5 +75,5 @@ func (srv *DurationService) Get(from, to time.Time, user *models.User) ([]*model
 		}
 	}
 
-	return durations, nil
+	return durations.Sorted(), nil
 }
