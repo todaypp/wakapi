@@ -1,0 +1,441 @@
+repo_name: todaypp/wakapi
+report_id: 56a7d2577195737b9aad2f56f8d2f372
+version: 0.1
+repo_type: Public
+timestamp: '2024-01-23T13:13:06+00:00'
+requested_by: muety
+provider: github
+branch: master
+detected_tools_count: 32
+tools:
+- name: CSS 3
+  description: The latest evolution of the Cascading Style Sheets language
+  website_url: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/6727/css.png
+  detection_source_url: https://github.com/todaypp/wakapi
+  detection_source: Repo Metadata
+- name: Golang
+  description: An open source programming language that makes it easy to build simple,
+    reliable, and efficient software
+  website_url: http://golang.org/
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1005/O6AczwfV_400x400.png
+  detection_source_url: https://github.com/todaypp/wakapi
+  detection_source: Repo Metadata
+- name: JavaScript
+  description: Lightweight, interpreted, object-oriented language with first-class
+    functions
+  website_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1209/javascript.jpeg
+  detection_source_url: https://github.com/todaypp/wakapi
+  detection_source: Repo Metadata
+- name: Python
+  description: A clear and powerful object-oriented programming language, comparable
+    to Perl, Ruby, Scheme, or Java.
+  website_url: https://www.python.org
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/993/pUBY5pVj.png
+  detection_source_url: https://github.com/todaypp/wakapi
+  detection_source: Repo Metadata
+- name: SQL
+  description: It is a domain-specific language used in programming
+  website_url: https://en.wikipedia.org/wiki/SQL
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/2271/default_068d33483bba6b81ee13fbd4dc7aab9780896a54.png
+  detection_source_url: https://github.com/todaypp/wakapi/blob/master/testing/data.sql
+  detection_source: testing/data.sql
+  last_updated_by: Ferdinand Mütsch
+  last_updated_on: 2021-05-28 15:13:28.000000000 Z
+- name: PostgreSQL
+  description: A powerful, open source object-relational database system
+  website_url: http://www.postgresql.org/
+  version: '12.3'
+  open_source: true
+  hosted_saas: false
+  category: Data Stores
+  sub_category: Databases
+  image_url: https://img.stackshare.io/service/1028/ASOhU5xJ.png
+  detection_source_url: https://github.com/todaypp/wakapi/blob/master/docker-compose.yml
+  detection_source: docker-compose.yml
+  last_updated_by: Roch D'Amour
+  last_updated_on: 2020-10-25 06:21:41.000000000 Z
+- name: Docker
+  description: Enterprise Container Platform for High-Velocity Innovation.
+  website_url: https://www.docker.com/
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Virtual Machine Platforms & Containers
+  image_url: https://img.stackshare.io/service/586/n4u37v9t_400x400.png
+  detection_source_url: https://github.com/todaypp/wakapi
+  detection_source: Repo Metadata
+- name: Git
+  description: Fast, scalable, distributed revision control system
+  website_url: http://git-scm.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Version Control System
+  image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/todaypp/wakapi
+  detection_source: Repo Metadata
+- name: GitHub Actions
+  description: Automate your workflow from idea to production
+  website_url: https://github.com/features/actions
+  open_source: false
+  hosted_saas: true
+  category: Build, Test, Deploy
+  sub_category: Continuous Integration
+  image_url: https://img.stackshare.io/service/11563/actions.png
+  detection_source_url: https://github.com/todaypp/wakapi/blob/master/.github/workflows/docker.yml
+  detection_source: ".github/workflows/docker.yml"
+  last_updated_by: Steven Tang
+  last_updated_on: 2021-10-21 09:41:49.000000000 Z
+- name: Testify
+  description: A toolkit with common assertions and mocks that plays nicely with the
+    standard library
+  website_url: https://github.com/stretchr/testify
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Go Testing
+  image_url: https://img.stackshare.io/service/8695/stretchr.png
+  detection_source_url: https://github.com/todaypp/wakapi/blob/master/go.mod
+  detection_source: go.mod
+  last_updated_by: Ferdinand Mütsch
+  last_updated_on: 2021-04-30 14:33:48.000000000 Z
+- name: Shell
+  description: A shell is a text-based terminal, used for manipulating programs and
+    files. Shell scripts typically manage program execution.
+  website_url: https://en.wikipedia.org/wiki/Shell_script
+  open_source: false
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/4631/default_c2062d40130562bdc836c13dbca02d318205a962.png
+  detection_source_url: https://github.com/todaypp/wakapi
+  detection_source: Repo Metadata
+- name: atomic
+  description: Wrapper types for sync/atomic which enforce atomic access
+  package_url: https://pkg.go.dev/go.uber.org/atomic
+  version: 1.3.2
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/todaypp/wakapi/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Ferdinand Mütsch
+  last_updated_on: 2021-08-06 12:26:03.000000000 Z
+- name: configor
+  description: Golang Configuration tool that support YAML
+  package_url: https://pkg.go.dev/github.com/jinzhu/configor
+  version: 1.2.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/todaypp/wakapi/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Ferdinand Mütsch
+  last_updated_on: 2021-04-30 14:33:48.000000000 Z
+- name: crypto
+  description: Go supplementary cryptography libraries
+  package_url: https://pkg.go.dev/golang.org/x/crypto
+  version: 0.0.0
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/todaypp/wakapi/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Ferdinand Mütsch
+  last_updated_on: 2021-12-15 11:51:44.000000000 Z
+  vulnerabilities:
+  - name: Improper Verification of Cryptographic Signature in golang.org/x/crypto
+    cve_id: CVE-2020-9283
+    cve_url: https://github.com/advisories/GHSA-ffhg-7mh4-33c4
+    detected_date: Aug 22
+    severity: moderate
+    first_patched: 0.0.0-20200220183623-bac4c82f6975
+- name: easyjson
+  description: Fast JSON serializer for golang
+  package_url: https://pkg.go.dev/github.com/mailru/easyjson
+  version: 0.0.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/todaypp/wakapi/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Ferdinand Mütsch
+  last_updated_on: 2021-02-07 10:54:07.000000000 Z
+- name: go-cache
+  description: An in-memory key:value store/cache
+  package_url: https://pkg.go.dev/github.com/patrickmn/go-cache
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/todaypp/wakapi/blob/master/go.mod
+  detection_source: go.mod
+  last_updated_by: Ferdinand Mütsch
+  last_updated_on: 2021-12-15 11:51:44.000000000 Z
+- name: go-sqlite3
+  description: Sqlite3 driver for go using database/sql
+  package_url: https://pkg.go.dev/github.com/mattn/go-sqlite3
+  version: 1.14.5
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/todaypp/wakapi/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Ferdinand Mütsch
+  last_updated_on: 2021-12-15 11:51:44.000000000 Z
+- name: go.uuid
+  description: UUID package for Go
+  package_url: https://pkg.go.dev/github.com/satori/go.uuid
+  version: 1.2.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/todaypp/wakapi/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Ferdinand Mütsch
+  last_updated_on: 2021-08-06 12:26:03.000000000 Z
+- name: handlers
+  description: "A collection of useful middleware for Go HTTP services &amp; web applications
+    \U0001F6C3"
+  package_url: https://pkg.go.dev/github.com/gorilla/handlers
+  version: 1.5.1
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/todaypp/wakapi/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Ferdinand Mütsch
+  last_updated_on: 2021-04-30 14:33:48.000000000 Z
+- name: httpsnoop
+  description: Package httpsnoop provides an easy way to capture http related metrics
+  package_url: https://pkg.go.dev/github.com/felixge/httpsnoop
+  version: 1.0.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/todaypp/wakapi/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Ferdinand Mütsch
+  last_updated_on: 2021-04-30 14:33:48.000000000 Z
+- name: kit
+  description: A standard library for microservices
+  package_url: https://pkg.go.dev/github.com/go-kit/kit
+  version: 0.8.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/todaypp/wakapi/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: robrotheram
+  last_updated_on: 2019-10-07 22:39:43.000000000 Z
+- name: mux
+  description: "A powerful HTTP router and URL matcher for building Go web servers
+    with \U0001F98D"
+  package_url: https://pkg.go.dev/github.com/gorilla/mux
+  version: 1.6.2
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/todaypp/wakapi/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: robrotheram
+  last_updated_on: 2019-10-07 22:39:43.000000000 Z
+- name: now
+  description: Now is a time toolkit for golang
+  package_url: https://pkg.go.dev/github.com/jinzhu/now
+  version: 1.1.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/todaypp/wakapi/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: robrotheram
+  last_updated_on: 2019-10-07 22:39:43.000000000 Z
+- name: purell
+  description: Tiny Go library to normalize URLs
+  package_url: https://pkg.go.dev/github.com/PuerkitoBio/purell
+  version: 1.1.1
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/todaypp/wakapi/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Ferdinand Mütsch
+  last_updated_on: 2021-12-15 11:51:44.000000000 Z
+- name: schema
+  description: Package gorilla/schema fills a struct with form values
+  package_url: https://pkg.go.dev/github.com/gorilla/schema
+  version: 1.2.0
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/todaypp/wakapi/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Ferdinand Mütsch
+  last_updated_on: 2021-04-30 14:33:48.000000000 Z
+- name: securecookie
+  description: Package gorilla/securecookie encodes and decodes authenticated and
+    optionally encrypted cookie values for Go web applications
+  package_url: https://pkg.go.dev/github.com/gorilla/securecookie
+  version: 1.1.1
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/todaypp/wakapi/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Ferdinand Mütsch
+  last_updated_on: 2020-05-24 11:41:19.000000000 Z
+- name: sentry-go
+  description: Official Sentry SDK for Go
+  package_url: https://pkg.go.dev/github.com/getsentry/sentry-go
+  version: 0.11.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/todaypp/wakapi/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Ferdinand Mütsch
+  last_updated_on: 2021-06-27 09:46:08.000000000 Z
+- name: spec
+  description: Openapi specification object model
+  package_url: https://pkg.go.dev/github.com/go-openapi/spec
+  version: 0.19.14
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/todaypp/wakapi/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Ferdinand Mütsch
+  last_updated_on: 2021-02-07 10:54:07.000000000 Z
+- name: swaggo/swag
+  description: Automatically generate RESTful API documentation with Swagger 2.0 for
+    Go
+  package_url: https://pkg.go.dev/github.com/swaggo/swag
+  version: 1.7.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/todaypp/wakapi/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Ferdinand Mütsch
+  last_updated_on: 2021-02-07 10:54:07.000000000 Z
+- name: template
+  description: Fork of Go's text/template adding newline elision
+  package_url: https://pkg.go.dev/github.com/alecthomas/template
+  version: 0.0.0
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/todaypp/wakapi/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Ferdinand Mütsch
+  last_updated_on: 2021-02-07 10:54:07.000000000 Z
+- name: toml
+  description: TOML parser for Golang with reflection
+  package_url: https://pkg.go.dev/github.com/BurntSushi/toml
+  version: 0.3.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/todaypp/wakapi/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Ferdinand Mütsch
+  last_updated_on: 2021-08-06 12:26:03.000000000 Z
+- name: tools
+  description: Go Tools
+  package_url: https://pkg.go.dev/golang.org/x/tools
+  version: 0.0.0
+  license: BSD-3-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Go Modules Packages
+  image_url: https://img.stackshare.io/package/go-packages/image.png
+  detection_source_url: https://github.com/todaypp/wakapi/blob/master/go.sum
+  detection_source: go.mod
+  last_updated_by: Ferdinand Mütsch
+  last_updated_on: 2021-02-07 10:54:07.000000000 Z
